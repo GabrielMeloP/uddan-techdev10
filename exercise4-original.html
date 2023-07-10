@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechDev#10 - Exercise 3 (Solution)</title>
+    <script>
+      var rawList = [
+        'WALL-E',
+        'Pulp Fiction',
+        "Harry Potter and the Philosopher's Stone",
+        'The Shawshank Redemption',
+        'Star Wars: Episode III – Revenge of the Sith',
+        'Top Gun: Maverick',
+        'Gone Girl',
+        "Jeux d'enfants",
+        'Everything Everywhere All at Once',
+        'Zerkalo',
+        'The Disaster Artist',
+        'The Usual Suspects',
+      ]
+
+      var filteredList = rawList
+
+      function updateList() {
+        const listElement = document.getElementById('movies')
+        listElement.innerHTML = ''
+
+        filteredList.forEach((movie) => {
+          listElement.innerHTML += `<li><img
+            src="images/movie-${rawList.indexOf(movie) + 1}.jpg"
+            alt="${movie}"
+            title="${movie}"
+          /></li>`
+        })
+      }
+
+      function filterMovies(filter) {
+        alert(filter)
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: midnightblue;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 24px;
+      }
+
+      header {
+        background-color: darkblue;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .horizontal-list {
+        list-style: none;
+        display: flex;
+        gap: 48px;
+      }
+
+      .searchbox {
+        font-family: inherit;
+        font-size: inherit;
+        padding: 8px;
+        border-radius: 8px;
+        width: 320px;
+      }
+
+      main {
+        padding: 48px 24px;
+      }
+
+      #movies {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+      }
+
+      #movies img {
+        width: 240px;
+        height: 356px;
+      }
+    </style>
+  </head>
+  <body onload="updateList()">
+    <header>
+      <ul class="menu horizontal-list">
+        <li>Home</li>
+        <li>Movies</li>
+        <li>Shows</li>
+        <li>Sports</li>
+      </ul>
+      <input
+        type="search"
+        class="searchbox"
+        placeholder="Type to search"
+        oninput="filterMovies(this.value)"
+      />
+    </header>
+    <main>
+      <ul id="movies" class="horizontal-list"></ul>
+    </main>
+  </body>
+</html>
